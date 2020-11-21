@@ -1,0 +1,26 @@
+#sketch-container {
+  height: 400px;
+  width: 400px;
+  border: 4px black solid;
+
+  display: grid;
+}
+
+#control-buttons {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  width: 408px;
+  text-align: center;
+}
+
+button {
+  padding: 0px;
+}
+
+.cell {
+  border: 1px black dotted;
+}
+
+.fill {
+  background-color: black;
+}
