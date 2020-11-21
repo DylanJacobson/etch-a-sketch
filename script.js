@@ -1,6 +1,12 @@
 let gridSize = 16;
 let mode = "fill";
 
+const sketchContainer = document.getElementById("sketch-container")
+
+sketchContainer.addEventListener('animationend', () => {
+  sketchContainer.classList.remove("animate__animated", "animate__wobble");
+});
+
 const sketchContent = document.getElementById("sketch-content");
 
 const clearButton = document.getElementById("clear");
@@ -47,6 +53,8 @@ function clearGrid() {
   document.querySelectorAll('.fill').forEach(cell => {
     cell.classList.remove('fill');
   });
+
+  sketchContainer.classList.add("animate__animated", "animate__wobble");
 };
 
 function modifyCell() {
