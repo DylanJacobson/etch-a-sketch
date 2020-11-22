@@ -17,6 +17,11 @@ clearButton.addEventListener('click', function() {
 const resizeButton = document.getElementById('resize');
 resizeButton.addEventListener('click', function() {
   let newSize = prompt('What should the new grid size be?');
+
+  while (newSize > 100 || newSize < 0 || isNaN(newSize)) {
+    newSize = prompt('Make sure you enter an integer between 1 and 100!');
+  }
+
   gridSize = newSize;
 
   while (sketchContent.firstChild) {
