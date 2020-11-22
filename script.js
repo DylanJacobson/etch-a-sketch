@@ -1,22 +1,22 @@
 let gridSize = 16;
-let mode = "fill";
+let mode = 'fill';
 
-const sketchContainer = document.getElementById("sketch-container")
+const sketchContainer = document.getElementById('sketch-container')
 
 sketchContainer.addEventListener('animationend', () => {
-  sketchContainer.classList.remove("wobble");
+  sketchContainer.classList.remove('wobble');
 });
 
-const sketchContent = document.getElementById("sketch-content");
+const sketchContent = document.getElementById('sketch-content');
 
-const clearButton = document.getElementById("clear");
+const clearButton = document.getElementById('clear');
 clearButton.addEventListener('click', function() {
   clearGrid();
 });
 
-const resizeButton = document.getElementById("resize");
+const resizeButton = document.getElementById('resize');
 resizeButton.addEventListener('click', function() {
-  let newSize = prompt("What should the new grid size be?");
+  let newSize = prompt('What should the new grid size be?');
   gridSize = newSize;
 
   while (sketchContent.firstChild) {
@@ -26,14 +26,14 @@ resizeButton.addEventListener('click', function() {
   populateGrid();
 })
 
-const eraseButton = document.getElementById("erase");
+const eraseButton = document.getElementById('erase');
 eraseButton.addEventListener('click', function() {
-  if (mode === "fill") {
-    mode = "erase";
-    eraseButton.textContent = "Fill";
-  } else if (mode === "erase") {
-    mode = "fill";
-    eraseButton.textContent = "Erase";
+  if (mode === 'fill') {
+    mode = 'erase';
+    eraseButton.textContent = 'Fill';
+  } else if (mode === 'erase') {
+    mode = 'fill';
+    eraseButton.textContent = 'Erase';
   }
 });
 
@@ -46,7 +46,7 @@ function populateGrid() {
     newCell.classList.add('cell');
     newCell.addEventListener('mouseover', modifyCell);
     newCell.addEventListener('animationend', function() {
-      this.classList.remove("fadeOut", "fill");
+      this.classList.remove('fadeOut', 'fill');
     });
     sketchContent.appendChild(newCell);
   }
@@ -54,16 +54,16 @@ function populateGrid() {
 
 function clearGrid() {
   document.querySelectorAll('.fill').forEach(cell => {
-    cell.classList.add("fadeOut");
+    cell.classList.add('fadeOut');
   });
 
-  sketchContainer.classList.add("wobble");
+  sketchContainer.classList.add('wobble');
 };
 
 function modifyCell() {
-  if (mode === "fill") {
+  if (mode === 'fill') {
     this.classList.add('fill');
-  } else if (mode === "erase") {
+  } else if (mode === 'erase') {
     if (this.classList.contains('fill')) {
       this.classList.remove('fill');
     }
