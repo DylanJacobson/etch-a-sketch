@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
 
+/*TODO: Make sketch fade out during wobble animation instead of disappearing*/
 body {
   display: flex;
   justify-content: center;
@@ -42,10 +43,6 @@ body {
 
 button {
   padding: 0px;
-}
-
-.cell {
-  border: 1px black dotted;
 }
 
 .fill {

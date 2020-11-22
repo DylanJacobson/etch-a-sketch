@@ -45,13 +45,16 @@ function populateGrid() {
     const newCell = document.createElement('div');
     newCell.classList.add('cell');
     newCell.addEventListener('mouseover', modifyCell);
+    newCell.addEventListener('animationend', function() {
+      this.classList.remove("animate__animated", "animate__fadeOut", "fill");
+    });
     sketchContent.appendChild(newCell);
   }
 }
 
 function clearGrid() {
   document.querySelectorAll('.fill').forEach(cell => {
-    cell.classList.remove('fill');
+    cell.classList.add("animate__animated", "animate__fadeOut");
   });
 
   sketchContainer.classList.add("animate__animated", "animate__wobble");
