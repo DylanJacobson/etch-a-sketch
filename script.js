@@ -4,7 +4,7 @@ let mode = "fill";
 const sketchContainer = document.getElementById("sketch-container")
 
 sketchContainer.addEventListener('animationend', () => {
-  sketchContainer.classList.remove("animate__animated", "animate__wobble");
+  sketchContainer.classList.remove("wobble");
 });
 
 const sketchContent = document.getElementById("sketch-content");
@@ -46,7 +46,7 @@ function populateGrid() {
     newCell.classList.add('cell');
     newCell.addEventListener('mouseover', modifyCell);
     newCell.addEventListener('animationend', function() {
-      this.classList.remove("animate__animated", "animate__fadeOut", "fill");
+      this.classList.remove("fadeOut", "fill");
     });
     sketchContent.appendChild(newCell);
   }
@@ -54,10 +54,10 @@ function populateGrid() {
 
 function clearGrid() {
   document.querySelectorAll('.fill').forEach(cell => {
-    cell.classList.add("animate__animated", "animate__fadeOut");
+    cell.classList.add("fadeOut");
   });
 
-  sketchContainer.classList.add("animate__animated", "animate__wobble");
+  sketchContainer.classList.add("wobble");
 };
 
 function modifyCell() {

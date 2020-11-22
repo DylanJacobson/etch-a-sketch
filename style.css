@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
 
-/*TODO: Make sketch fade out during wobble animation instead of disappearing*/
 body {
   display: flex;
   justify-content: center;
@@ -47,4 +46,28 @@ button {
 
 .fill {
   background-color: black;
+}
+
+.fadeOut {
+  animation: fadeOut 1s 1;
+}
+
+.wobble {
+  animation: wobble 1s 1;
+}
+
+/* ANIMATIONS */
+@keyframes fadeOut {
+  0% {opacity: 1;}
+  100% {opacity: 0;} 
+}
+
+@keyframes wobble {
+  0% {transform: 0px;}
+  15% {transform: translate3d(-25%, 0, 0) rotate3d(0, 0, 1, -5deg)}
+  30% {transform: translate3d(20%, 0, 0) rotate3d(0, 0, 1, 3deg)}
+  45% {transform: translate3d(-15%, 0, 0) rotate3d(0, 0, 1, -3deg)}
+  60% {transform: translate3d(10%, 0, 0) rotate3d(0, 0, 1, 2deg)}
+  75% {transform: translate3d(-5%, 0, 0) rotate3d(0, 0, 1, -1deg)}
+  100% {transform: none}
 }
