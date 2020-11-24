@@ -47,7 +47,7 @@ function populateGrid() {
       this.classList.remove('fadeOut', 'fill');
       // removing the background color like this allows this
       // function to work on rainbow cells
-      this.style.backgroundColor = null;
+      this.style.backgroundColor = undefined;
     });
     sketchContent.appendChild(newCell);
   }
