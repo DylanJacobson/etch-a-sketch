@@ -7,14 +7,13 @@ sketchContainer.addEventListener('animationend', () => {
   sketchContainer.classList.remove('wobble');
 });
 
-const sketchContent = document.getElementById('sketch-content');
-
 const clearButton = document.getElementById('clear');
 clearButton.addEventListener('click', function() {
   clearGrid();
 });
 
 const resizeButton = document.getElementById('resize');
+const sketchContent = document.getElementById('sketch-content');
 resizeButton.addEventListener('click', function() {
   let newSize = prompt('What should the new grid size be?');
 
@@ -31,16 +30,10 @@ resizeButton.addEventListener('click', function() {
   populateGrid();
 })
 
-const eraseButton = document.getElementById('erase');
-eraseButton.addEventListener('click', function() {
-  if (mode === 'fill') {
-    mode = 'erase';
-    eraseButton.textContent = 'Fill';
-  } else if (mode === 'erase') {
-    mode = 'fill';
-    eraseButton.textContent = 'Erase';
-  }
-});
+const modeSelector = document.getElementById('modeSelector');
+modeSelector.onchange = function() {
+  mode = modeSelector.value;
+}
 
 function populateGrid() {
   sketchContent.style.gridTemplateColumns = `repeat(${gridSize}, 1fr)`;
@@ -52,13 +45,16 @@ function populateGrid() {
     newCell.addEventListener('mouseover', modifyCell);
     newCell.addEventListener('animationend', function() {
       this.classList.remove('fadeOut', 'fill');
+      // removing the background color like this allows this
+      // function to work on rainbow cells
+      this.style.backgroundColor = null;
     });
     sketchContent.appendChild(newCell);
   }
 }
 
 function clearGrid() {
-  document.querySelectorAll('.fill').forEach(cell => {
+  document.querySelectorAll('.cell').forEach(cell => {
     cell.classList.add('fadeOut');
   });
 
@@ -68,10 +64,13 @@ function clearGrid() {
 function modifyCell() {
   if (mode === 'fill') {
     this.classList.add('fill');
+  } else if (mode === 'rainbow') {
+    this.style.backgroundColor = Math.floor(Math.random()*16777215).toString(16);
   } else if (mode === 'erase') {
     if (this.classList.contains('fill')) {
       this.classList.remove('fill');
     }
+    this.style.backgroundColor = null;
   }
 }
 
