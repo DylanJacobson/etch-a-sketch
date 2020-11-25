@@ -6,17 +6,18 @@
   <body>
     <div id="sketch-container">
       <div id="sketch-content"></div>
-      <div id="logo">Etch-A-Sketch</div>
-    </div>
-    <div id="control-buttons">
-      <button id="clear" class="control">Clear Sketch</button>
-      <button id="resize" class="control">Resize Grid</button>
-      <!--<button id="erase" class="control">Erase</button>-->
-      <select name="mode" id="modeSelector">
-        <option value="fill">fill</option>
-        <option value="grayscale">grayscale</option>
-        <option value="rainbow">rainbow</option>
-      </select>
+      <div id="bottom-bar">
+        <div id="clear" class="controls">CLEAR</div>
+        <div class="mode-control">
+          <div class="mode-control-label">Sketch Mode</div>
+          <select name="mode" id="modeSelector">
+            <option value="fill">fill</option>
+            <option value="grayscale">grayscale</option>
+            <option value="rainbow">rainbow</option>
+          </select>
+        </div>
+        <div id="resize" class="controls">RESIZE</div>
+      </div>
     </div>
     <script src="script.js"></script>  
   </body>
